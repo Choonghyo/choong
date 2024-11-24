@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int solution(int a, int b) {
+    string ab = to_string(a) + to_string(b);
+    string ba = to_string(b) + to_string(a);
+
+    int abValue = stoi(ab);
+    int baValue = stoi(ba);
+
+    return abValue >= baValue ? abValue : baValue;
+}
+
+int main() {
+    int a, b;
+
+    cout << "a : ";
+    cin >> a;
+    cout << "b : ";
+    cin >> b;
+
+    if (a < 1 || a >= 10000 || b < 1 || b >= 10000) {
+        cerr << "조건 사항 위반!! (1 ≤ a, b < 10,000 위반)" << endl;
+        return 1;
+    }
+    int result = solution(a, b);
+    cout << " a,b와 b,a 두 정수를 붙여서 쓴 더 큰값: " << result << endl;
+
+    return 0;
+}

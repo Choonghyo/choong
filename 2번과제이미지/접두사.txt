@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int solution(string my_string, string is_prefix) {
+    if (is_prefix.length() > my_string.length()) {
+        return 0;
+    }
+    if (my_string.substr(0, is_prefix.length()) == is_prefix) {
+        return 1;
+    }
+    return 0;
+}
+bool limits(const string& str) {
+    if (str.length() < 1 || str.length() > 100) {
+        return false;
+    }
+    for (char ch : str) {
+        if (!islower(ch)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    string my_string;
+    cout << "my_string : ";
+    cin >> my_string;
+    if (!limits(my_string)) {
+        cout << "조건 사항 위반!!(1 ≤ my_string의 길이 ≤ 100 위반 or 영소문자 외의 입력이 있습니다.)";
+        return 1;
+    }
+
+    string is_prefix;
+    cout << "접두사(is_prefix): ";
+    cin >> is_prefix;
+
+    if (!limits(is_prefix)) {
+        cout << "조건 사항 위반!!(1 ≤ is_prefix의 길이 ≤ 100 위반 or 영소문자 외의 입력이 있습니다.)";
+        return 1;
+    }
+    int result = solution(my_string, is_prefix);
+    printf ("result: %d", result);
+
+    return 0;
+}

@@ -1,0 +1,25 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int n, int k) {
+    int sheep = 12000;
+    int drink = 2000;
+
+    int free = n / 10;
+    int total = (sheep * n) + (drink * (k - free));
+
+    return total;
+}
+
+#include <iostream>
+int main() {
+    int n = 64; // n=양꼬지
+    int k = 6;  // k=음료수(조건1. 서비스로 받은 음료수는 모두 마십니다.)
+
+    cout.imbue(locale(""));
+    int result = solution(n, k);
+    cout << n << "인분을 시켜 서비스로 음료수를 "<< n / 10 <<"개 받아 총 " << n <<" * 12000 + " << k <<" * 2000 - "<<n / 10 <<" * 2000 = " << result << "원입니다." << endl;
+    return 0;
+}

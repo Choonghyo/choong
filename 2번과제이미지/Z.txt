@@ -1,0 +1,46 @@
+#include <string>
+#include <vector>
+#include <sstream>
+#include <iostream>
+using namespace std;
+
+int solution(string s) {
+    int sum = 0;
+    int last = 0;
+    string temp = ""; 
+
+    for (char ch : s) {
+        if (ch == ' ') {
+            if (temp == "Z") {
+                sum -= last; 
+            }
+            else {
+                last = stoi(temp); 
+                sum += last;      
+            }
+            temp = ""; //초기화
+        }
+        else {
+            temp += ch;
+        }
+    }
+
+    if (temp == "Z") {
+        sum -= last; 
+    }
+    else {
+        last = stoi(temp);
+        sum += last;
+    }
+    return sum;
+}
+
+
+int main() {
+    cout << solution("1 2 Z 3") << endl;
+    cout << solution("10 20 30 40") << endl;
+    cout << solution("10 Z 20 Z 1") << endl;
+    cout << solution("10 Z 20 Z") << endl;
+    cout << solution("-1 -2 -3 Z") << endl;
+    return 0;
+}

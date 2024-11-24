@@ -1,0 +1,39 @@
+#include <string>
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int solution(vector<string> order) {
+    //제한사항
+    if (order.size() < 1 || order.size() > 1000) {
+        cerr << "조건 사항 위반!!(1 ≤ order의 길이 ≤ 1,000 위반입니다.\n 다시 주문해주시기 바랍니다.)" << endl;
+        return -1;
+    }
+
+    int total = 0;
+
+    for (string item : order) {
+        if(item =="iceamericano"||item=="americanoice"||item=="hotamericano"||item=="americanohot"||
+            item == "americano" || item == "anything") {
+            total += 4500;
+        }
+        else if (item == "icecafelatte" || item == "cafelatteice" || item == "hotcafelatte" || item == "cafelattehot" ||
+            item == "cafelatte") {
+            total += 5000;
+        }
+    }
+    return total;
+}
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    vector<string> order1 = { "cafelatte", "americanoice", "hotcafelatte", "anything" };
+    vector<string> order2 = { "americanoice", "americano", "iceamericano" };
+
+    cout << "결제 금액 1: " << solution(order1) << endl; 
+    cout << "결제 금액 2: " << solution(order2) << endl;
+
+    return 0;
+}
