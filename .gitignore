@@ -1,0 +1,7 @@
+*.ipch
+*.pdb
+*.db
+*.exe
+*.obj
+*.log
+*.vs/
